@@ -1,0 +1,63 @@
+<div class="mt-5" >
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <div class="d-flex justify-content-between">
+        <h3>Table products</h3>
+        <a class="btn btn-primary" routerLink="../create"
+           role="button">Create a product</a>
+      </div>
+      <hr />
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Short Desc</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <th>{{product.id}}</th>
+          <th>{{product.name}}</th>
+          <td>
+            {{product.price}}đ
+          </td>
+          <td>{{product.shortDesc}}</td>
+          <td>
+            <a routerLink="../view/{{product.id}}"
+               class="btn btn-success" role="button" >View</a>
+            <a routerLink="../update/{{product.id}}"
+               class="btn btn-warning" role="button">Update</a>
+            <a routerLink="../delete/{{product.id}}"
+               class="btn btn-danger" role="button">Delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="pagination d-flex justify-content-center mt-5">
+        <li class="page-item">
+          <button aria-label="Previous" (click)="previousPage()" [disabled]="page === 1">
+            <span aria-hidden="true">&laquo;</span>
+          </button>
+        </li>
+        <li class="page-item">
+          <a  (click)="goToPage(1)">
+            1
+          </a>
+        </li>
+        <li class="page-item">
+          <a (click)="goToPage(2)">
+            2
+          </a>
+        </li>
+        <li class="page-item">
+          <button aria-label="Next" (click)="nextPage()">
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

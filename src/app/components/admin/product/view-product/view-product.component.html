@@ -1,0 +1,32 @@
+<div class="mt-5">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <div class="d-flex justify-content-between">
+        <h3>Product Details</h3>
+      </div>
+      <hr />
+      <div class="card" style="width: 60%;">
+        <img [src]="'./assets/images/img-system/'+productById?.image" alt="Card image cap"
+             class="card-img-top">
+        <div class=" card-header">
+          Information
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: {{ productById?.id }}</li>
+          <li class="list-group-item">Name: {{ productById?.name }}</li>
+          <li class="list-group-item">Price: {{ productById?.price }}</li>
+          <li class="list-group-item">Detail description:
+            {{ productById?.detailDesc }}
+          </li>
+          <li class="list-group-item">Short description:
+            {{ productById?.shortDesc }}
+          </li>
+          <li class="list-group-item">Quantity:
+            {{ productById?.quantity }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-success mt-3" routerLink="../..">Back</a>
+</div>

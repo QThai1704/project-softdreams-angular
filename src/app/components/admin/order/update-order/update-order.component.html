@@ -1,0 +1,41 @@
+<div class=" mt-5">
+  <div class="row">
+    <div class="col-md-6 col-12 mx-auto">
+      <h3>Update a order</h3>
+      <hr />
+      <form class="row" [formGroup]="orderForm" (ngSubmit)="updateOrderApi()">
+        <div class="mb-3" style="display: none;">
+          <label class="form-label">Id: </label>
+          <input type="text" class="form-control" formControlName="id"/>
+        </div>
+        <div class="mb-3">
+          <label>Order id = {{ order?.id }}</label>
+          <br/>
+          <label class="form-label">Price:
+            {{ order?.totalPrice }}
+          </label>
+        </div>
+        <div class="mb-3 col-12 col-md-6" >
+          <label class="form-label">User: </label>
+          <input type="text" class="form-control"
+                      formControlName="receiverName"  />
+        </div>
+        <div class="mb-3 col-12 col-md-6">
+          <label class="form-label">Status:</label>
+          <select class="form-select" formControlName="status">
+            <option value="PENDING">PENDING</option>
+            <option value="SHIPPING">SHIPPING</option>
+            <option value="COMPLETE">COMPLETE</option>
+            <option value="CANCEL">CANCEL</option>
+          </select>
+        </div>
+        <div class="col-12 mb-5">
+          <button type="submit" class="btn btn-warning">Update</button>
+          <a routerLink="../.." class="btn btn-success">Back</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>

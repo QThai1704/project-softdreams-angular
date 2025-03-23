@@ -1,0 +1,12 @@
+<!-- Features Section Start -->
+<div class="container-fluid features py-5 mt-5">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" *ngFor = "let item of featureList">
+        <app-feature-detail class="d-content component-feature-detail" [data]="item">
+        </app-feature-detail>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Features Section End -->

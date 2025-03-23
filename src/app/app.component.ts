@@ -1,13 +1,24 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
+import {HeaderComponent} from "./header/header.component";
+import {BannerComponent} from "./banner/banner.component";
+import {FeatureComponent} from "./feature/feature.component";
+import {FooterComponent} from "./footer/footer.component";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faCarSide} from "@fortawesome/free-solid-svg-icons";
+import {ProductComponent} from "./product/product.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['../styles.css', '../main.css', './app.component.css' ],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'project-softdreams-angular';
+  title = 'Laptop Shop';
+  iconCarSide = faCarSide;
 }

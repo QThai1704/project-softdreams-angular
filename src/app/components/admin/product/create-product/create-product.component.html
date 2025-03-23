@@ -1,0 +1,59 @@
+<div class="mt-5">
+  <div class="row">
+    <div class="col-md-6 col-12 mx-auto">
+      <h3>Create a product</h3>
+      <hr />
+      <form class="row" [formGroup]="productForm" (ngSubmit)="createNewProduct()">
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Name:</label>
+          <input type="text"
+                      class="form-control"
+                      path="name"
+                      formControlName="name"/>
+        </div>
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Price:</label>
+          <input type="number"
+                      class="form-control"
+                      path="price"
+                      formControlName="price"/>
+        </div>
+        <div class="mb-3 col-12">
+          <label class="form-label">Detail description:</label>
+          <textarea
+            class="form-control"
+            id="floatingTextarea2" style="height: 100px" path="detailDesc"
+            formControlName="detailDesc">
+          </textarea>
+        </div>
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Short description:</label>
+          <input  type="text"
+                  class="form-control "
+                  path="shortDesc"
+                  formControlName="shortDesc"/>
+        </div>
+        <div class="mb-3 col-md-6 col-12">
+          <label class="form-label">Quantity:</label>
+          <input type="number"
+                      class="form-control"
+                      path="quantity"
+                 formControlName="quantity"/>
+        </div>
+        <div class="mb-3 col-md-6 col-12">
+          <label for="avatarFile" class="form-label">Avata:</label>
+          <input class="form-control" type="file" id="avatarFile"
+                 accept=".png, .jpg, .jpeg" formControlName="image">
+        </div>
+        <div class="col-12 mb-3">
+          <img style="max-height: 250px; display: none;" alt=" avatar
+          preview" id="avatarPreview">
+        </div>
+        <div class="col-12 mb-5">
+          <button type="submit" class="btn btn-primary">Create</button>
+          <a class="btn btn-success mt-3" routerLink="../">Back</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

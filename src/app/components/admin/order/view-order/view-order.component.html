@@ -1,0 +1,69 @@
+<div class="mt-5">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <div class="d-flex justify-content-between">
+        <h3>Order detail</h3>
+      </div>
+      <hr />
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Sản phẩm</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Giá cả</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Thành tiền</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="orderDetails && orderDetails.length > 0; else empty " >
+            <tr *ngFor="let orderDetail of orderDetails">
+              <th scope="row">
+                <div class="d-flex align-items-center">
+                  <img [src]="'../../../assets/images/img-system/'+ orderDetail.product.image"
+                       class="img-fluid me-5 rounded-circle"
+                       style="width: 80px; height: 80px;"
+                       alt="Sản phẩm">
+                </div>
+              </th>
+              <td>
+                <p class="mb-0 mt-4">
+                  {{orderDetail.product.name}}
+                </p>
+              </td>
+              <td>
+                <p class="mb-0 mt-4">
+                  {{orderDetail.product.price}}đ
+                </p>
+              </td>
+              <td>
+<!--                <div class="input-group quantity mt-4"-->
+<!--                     style="width: 100px;">-->
+<!--                  <input type="text"-->
+<!--                         class="form-control form-control-sm text-center border-0"-->
+<!--                         value="">-->
+<!--                </div>-->
+                <p class="mb-0 mt-4">
+                  {{orderDetail.quantity}}
+                </p>
+              </td>
+              <td>
+                <p class="mb-0 mt-4">
+                  {{orderDetail.product.price * orderDetail.quantity}}đ
+                </p>
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #empty>
+            <tr>
+              <td colspan="6">
+                Không có sản phẩm trong giỏ hàng
+              </td>
+            </tr>
+          </ng-template>
+        </table>
+      </div>
+      <a routerLink="../.." class="btn btn-success mt-3">Back</a>
+    </div>
+  </div>
+</div>

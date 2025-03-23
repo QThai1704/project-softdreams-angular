@@ -1,0 +1,59 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Quản lý người dùng</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a routerLink="admin">Dashboard</a></li>
+      <li class="breadcrumb-item active">Users</li>
+    </ol>
+    <div class="mt-5">
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <div class="d-flex justify-content-between">
+            <h3>Thông tin</h3>
+            <a class="btn btn-primary" routerLink="../create" role="button">Tạo người dùng mới</a>
+          </div>
+          <hr />
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Email</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <th>{{user.id}}</th>
+              <td>{{user.email}}</td>
+              <td>{{user.fullName}}</td>
+              <td>
+                <a class="btn btn-success" role="button" routerLink="../view/{{user.id}}">View</a>
+                <a class="btn btn-warning" role="button" routerLink="../update/{{user.id}}">Update</a>
+                <a class="btn btn-danger" role="button" routerLink="../delete/{{user.id}}">Delete</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="pagination d-flex justify-content-center mt-5">
+            <li class="page-item">
+              <a class="" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="">
+                1
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

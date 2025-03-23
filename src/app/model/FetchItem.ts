@@ -1,4 +1,4 @@
-export interface ApiResponse<T> {
+export interface FetchItem<T> {
   timestamp: string;
   message: string;
   status: number;

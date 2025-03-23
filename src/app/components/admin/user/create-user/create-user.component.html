@@ -1,0 +1,73 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Create User</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a routerLink="admin">Dashboard</a></li>
+      <li class="breadcrumb-item active">Users</li>
+    </ol>
+    <div class="mt-5">
+      <div class="row">
+        <div class="col-md-6 col-12 mx-auto">
+          <h3>Create a user</h3>
+          <hr />
+          <form [formGroup]="userForm" (ngSubmit)="createNewUser()">
+            <div class="mb-3 col-md-6 col-12">
+              <label class="form-label">Email:</label>
+              <input type="email"
+                          class="form-control is-invalid}"
+                          path="email"
+                     formControlName="email"/>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+              <label class="form-label">Password:</label>
+              <input type="password"
+                          class="form-control is-invalid"
+                          path="password"
+                     formControlName="password"/>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+              <label class="form-label">Phone number:</label>
+              <input type="text"
+                          class="form-control is-invalid}"
+                          path="phone"
+                     formControlName="phone"/>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+              <label class="form-label">Full Name:</label>
+              <input type="text"
+                          class="form-control is-invalid}"
+                          path="fullName"
+                     formControlName="fullName"/>
+            </div>
+            <div class="mb-3 col-12">
+              <label class="form-label">Address:</label>
+              <input type="text"
+                          class="form-control is-invalid}"
+                          path="address"
+                     formControlName="address"/>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+              <label class="form-label">Role:</label>
+              <select class="form-select" path="role" formControlName="role">
+                <option value="ADMIN">ADMIN</option>
+                <option value="USER">USER</option>
+              </select>
+            </div>
+            <div class="mb-3 col-md-6 col-12">
+              <label for="avatarFile" class="form-label">Avata:</label>
+              <input class="form-control" type="file" id="avatarFile"
+                     accept=".png, .jpg, .jpeg" name="avataFile">
+            </div>
+            <div class="col-12 mb-3">
+              <img style="max-height: 250px; display: none;" alt=" avatar preview" id="avatarPreview" />
+            </div>
+            <div class="col-12 mb-5">
+              <button type="submit" class="btn btn-primary">Create</button>
+              <a class="btn btn-success mt-3" routerLink=".." >Back</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

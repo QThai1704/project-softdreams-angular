@@ -1,0 +1,35 @@
+/*** features Start ***/
+.features .features-item .features-icon {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.features .features-item .features-icon::after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  background: var(--bs-secondary);
+  position: absolute;
+  bottom: -10px;
+  transform: translate(-50%) rotate(45deg);
+  background: var(--bs-secondary);
+}
+
+.component-feature-detail{
+  display: contents;
+  box-sizing: border-box;
+}
+/*** features End ***/
+
+/*** service Start ***/
+.service .service-item .service-content {
+  position: relative;
+  width: 250px;
+  height: 130px;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*** service End ***/

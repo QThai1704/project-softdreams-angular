@@ -1,0 +1,56 @@
+<div class="mt-5">
+  <div class="row">
+    <div class="col-md-6 col-12 mx-auto">
+      <h3>Update a product</h3>
+      <hr />
+      <form [formGroup]="productForm" (ngSubmit)="updateProductApi()" >
+        <div class="mb-3 d-none">
+          <label class="form-label">ID:</label>
+          <input type="text" class="form-control" path="id"
+                 formControlName="id"/>
+        </div>
+        <div class="mb-3 col-12">
+          <label class="form-label">Name:</label>
+          <input type="text"
+                      class="form-control"
+                 formControlName="name"/>
+        </div>
+        <div class="mb-3 col-12">
+          <label class="form-label">Price:</label>
+          <input type="number"
+                 class="form-control"
+                 formControlName="price"/>
+        </div>
+        <div class="mb-3 col-12">
+          <label class="form-label">Detail description:</label>
+          <textarea class="form-control" type="text" formControlName="detailDesc"></textarea>
+        </div>
+        <div class=" mb-3 col-12">
+          <label class="form-label">Short description:</label>
+          <input type="text"
+                      class="form-control"
+                      path="shortDesc"
+                 formControlName="shortDesc"/>
+        </div>
+        <div class=" mb-3 col-12">
+          <label class="form-label">Quantity:</label>
+          <input type="number"
+                      class="form-control"
+                      path="quantity"
+                 formControlName="quantity"/>
+        </div>
+        <div class="mb-3 col-md-6 col-12">
+          <label for="avatarFile" class="form-label">Avata:</label>
+          <input class="form-control" type="file" id="avatarFile"
+                 accept=".png, .jpg, .jpeg" name="imgProductFile">
+        </div>
+        <div class="col-12 mb-3">
+          <img style="max-height: 250px; display: none;" alt="avatar preview"
+               id="avatarPreview" />
+        </div>
+        <button type="submit" class="btn btn-warning">Update</button>
+        <a class="btn btn-success mt-3" routerLink="../..">Back</a>
+      </form>
+    </div>
+  </div>
+</div>

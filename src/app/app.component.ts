@@ -15,7 +15,7 @@ import {ProductComponent} from "./product/product.component";
     RouterOutlet,
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['../styles.css', '../main.css', './app.component.css' ],
+  styleUrls: ['../styles.css', '../main.css', './app.component.css', '../assets/admin/css/style-admin.css' ],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {

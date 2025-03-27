@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, tap} from "rxjs";
+import {isPlatformBrowser} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ import {Observable, tap} from "rxjs";
 export class AuthService {
   private loginUrl = 'http://localhost:8081/api/v1/auth/login';
   private registerUrl = 'http://localhost:8081/api/v1/auth/register';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
     return this.httpClient.post(this.loginUrl, body).pipe(
       tap((response: any) => {
-        localStorage.setItem('accessToken', response.data.accessToken);
+        sessionStorage.setItem('accessToken', response.data.accessToken);
       })
     );
   }
@@ -24,19 +25,19 @@ export class AuthService {
     return this.httpClient.post(this.registerUrl, body);
   }
 
-  // Kiểm tra xem người dùng đã đăng nhập hay chưa
   isLoggedIn(): boolean {
-    return localStorage.getItem('accessToken') !== null;
+    if (isPlatformBrowser(this.platformId)) {
+      return !!sessionStorage.getItem('accessToken');
+    }
+    return false;
   }
 
-  // Lấy thông tin người dùng từ localStorage (nếu có)
   getUser(): any {
-    const user = localStorage.getItem('user');
+    const user = sessionStorage.getItem('user');
     return user ? JSON.parse(user) : null;
   }
 
-  // Đăng xuất
   logout(): void {
-    localStorage.removeItem('accessToken');
+    sessionStorage.removeItem('accessToken');
   }
 }

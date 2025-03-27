@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
 })
-export class JwtService implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (typeof localStorage !== 'undefined') {
-      const jwtToken = localStorage.getItem('accessToken');
-      console.log(jwtToken);
-      if (jwtToken != null) {
-        request = request.clone({ setHeaders: { Authorization: `Bearer ${jwtToken}`, }, });
-      }
+export class JwtService {
+  isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  getToken(): string | null {
+    if (this.isBrowser) {
+      return sessionStorage.getItem("accessToken");
     }
-    return next.handle(request);
+    return null;
   }
 }

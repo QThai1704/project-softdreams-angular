@@ -28,12 +28,12 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe(
       response => {
-        localStorage.setItem("accessToken", response.data.accessToken);
+        sessionStorage.setItem("accessToken", response.data.accessToken);
         if(response.data.user?.role?.name === 'ADMIN') {
-          this.router.navigate(['admin']);
+          this.router.navigate(['admin']).then();
         }
         else {
-          this.router.navigate(['']);
+          this.router.navigate(['']).then();
         }
       },
       error => {

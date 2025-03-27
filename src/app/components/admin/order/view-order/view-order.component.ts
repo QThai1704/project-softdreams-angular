@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {Order, OrderDetailRes} from "../../../../model/order";
+import {OrderDetailRes} from "../../../../model/order";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
 import {OrderService} from "../../../../service/order.service";
@@ -35,7 +35,7 @@ export class ViewOrderComponent implements OnInit {
   ngOnInit(): void {
     this.orderId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.orderId) {
-      this.fetchOrderDetail(this.orderId);
+      this.fetchOrderDetail(this.orderId).then();
     }
   }
 

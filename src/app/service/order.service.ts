@@ -9,9 +9,10 @@ import {FetchItem} from "../model/FetchItem";
   providedIn: 'root'
 })
 export class OrderService {
+  // Đường dẫn của admin
   private url = 'http://localhost:8081/api/v1/order';
-  private orderDetailUrl = 'http://localhost:8081/api/v1/order-detail';
-  private downloadBillUrl = 'http://localhost:8081/api/v1/report';
+  private orderDetailUrl = 'http://localhost:8081/api/v1/admin/order-detail';
+  private downloadBillUrl = 'http://localhost:8081/api/v1/admin/report';
 
   constructor(private http: HttpClient) { }
   getAllOrder(): Observable<FetchAllItem<Order>> {

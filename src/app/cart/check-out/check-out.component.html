@@ -1,0 +1,114 @@
+<!-- Cart Page Start -->
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Sản phẩm</th>
+          <th scope="col">Tên</th>
+          <th scope="col">Giá cả</th>
+          <th scope="col">Số lượng</th>
+          <th scope="col">Thành tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">
+              Không có sản phẩm trong giỏ hàng
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex align-items-center">
+                <img src=""
+                     class="img-fluid me-5 rounded-circle"
+                     style="width: 80px; height: 80px;" alt="">
+              </div>
+            </th>
+            <td>
+              <p class="mb-0 mt-4">
+                <a href="" target="_blank">
+                </a>
+              </p>
+            </td>
+            <td>
+              <p class="mb-0 mt-4">
+
+              </p>
+            </td>
+            <td>
+              <div class="input-group quantity mt-4" style="width: 100px;">
+                <input type="text"
+                       class="form-control form-control-sm text-center border-0">
+              </div>
+            </td>
+            <td>
+              <p class="mb-0 mt-4" >
+              </p>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+      <form (ngSubmit)="directSuccess()">
+        <div class="mt-5 row g-4 justify-content-start">
+          <div class="col-12 col-md-6">
+            <div class="p-4 ">
+              <h5>Thông Tin Người Nhận
+              </h5>
+              <div class="row">
+                <div class="col-12 form-group mb-3">
+                  <label>Tên người nhận</label>
+                  <input class="form-control" name="receiverName" required />
+                </div>
+                <div class="col-12 form-group mb-3">
+                  <label>Địa chỉ người nhận</label>
+                  <input class="form-control" name="receiverAddress" required />
+                </div>
+                <div class="col-12 form-group mb-3">
+                  <label>Số điện thoại</label>
+                  <input class="form-control" name="receiverPhone" required />
+                </div>
+                <div class="mt-4">
+                  <i class="fas fa-arrow-left"></i>
+                  <a href="/cart">Quay lại giỏ hàng</a>
+                </div>
+                <input style="display: none;" value="${totalPrice}"
+                       name="totalPrice" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="bg-light rounded">
+              <div class="p-4">
+                <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Thanh Toán</span>
+                </h1>
+
+                <div class="d-flex justify-content-between">
+                  <h5 class="mb-0 me-4">Phí vận chuyển</h5>
+                  <div class="">
+                    <p class="mb-0">0 đ</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>
+                <p class="mb-0 pe-4">
+
+                </p>
+              </div>
+              <button
+                type="submit"
+                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
+                Xác nhận thanh toán
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>
+<!-- Cart Page End -->

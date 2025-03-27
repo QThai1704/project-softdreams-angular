@@ -10,13 +10,13 @@
           <ul class="nav nav-pills d-inline-flex text-center mb-5">
             <li class="nav-item">
               <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1"
-                 (click) = "getProduct()">
+                 (click) = "getProduct(1)">
                 <span class="text-dark" style="width: 130px;">Tất cả</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2"
-              (click) = "filterProduct('Asus')">
+                 (click) = "filterProduct('Asus')">
                 <span class="text-dark" style="width: 130px;">Asus</span>
               </a>
             </li>
@@ -65,27 +65,26 @@
         </div>
         <div class="pagination d-flex justify-content-center mt-5">
           <li class="page-item">
-            <button aria-label="Previous" (click)="previousPage()" [disabled]="page === 1">
+            <button aria-label="Previous" (click)="previousPage()" [disabled]="page === 1"
+                    [ngStyle]="{
+                    'border-color': '#ccc',
+                  }">
               <span aria-hidden="true">&laquo;</span>
             </button>
           </li>
-          <li class="page-item">
-            <a  (click)="goToPage(1)">
-              1
-            </a>
+          <li class="page-item" *ngFor="let pageNum of getPageNumbers()">
+            <button (click)="goToPage(pageNum)" [class.active]="page === pageNum"
+                    [ngStyle]="{
+                    'background-color': page === pageNum ? '#007bff' : '#fff',
+                    'color': page === pageNum ? '#fff' : '#000',
+                    'border-color': page === pageNum ? '#007bff' : '#ccc'
+                  }">
+              {{ pageNum }}
+            </button>
           </li>
           <li class="page-item">
-            <a (click)="goToPage(2)">
-              2
-            </a>
-          </li>
-          <li class="page-item">
-            <a (click)="goToPage(3)">
-              3
-            </a>
-          </li>
-          <li class="page-item">
-            <button aria-label="Next" (click)="nextPage()">
+            <button aria-label="Next" (click)="nextPage()" [disabled]="page === totalPages"
+                    [ngStyle]="{'border-color': '#ccc'}">
               <span aria-hidden="true">&raquo;</span>
             </button>
           </li>

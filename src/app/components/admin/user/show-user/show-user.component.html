@@ -29,7 +29,7 @@
               <td>{{user.fullName}}</td>
               <td>
                 <a class="btn btn-success" role="button" routerLink="../view/{{user.id}}">View</a>
-                <a class="btn btn-warning" role="button" routerLink="../update/{{user.id}}">Update</a>
+                <a class="btn btn-warning mx-2" role="button" routerLink="../update/{{user.id}}">Update</a>
                 <a class="btn btn-danger" role="button" routerLink="../delete/{{user.id}}">Delete</a>
               </td>
             </tr>
@@ -37,19 +37,19 @@
           </table>
           <div class="pagination d-flex justify-content-center mt-5">
             <li class="page-item">
-              <a class="" aria-label="Previous">
+              <button class="" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
-              </a>
+              </button>
             </li>
             <li class="page-item">
-              <a class="">
+              <button class="">
                 1
-              </a>
+              </button>
             </li>
             <li class="page-item">
-              <a class="" aria-label="Next">
+              <button class="" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
-              </a>
+              </button>
             </li>
           </div>
         </div>

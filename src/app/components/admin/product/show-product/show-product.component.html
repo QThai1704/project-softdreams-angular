@@ -29,7 +29,7 @@
             <a routerLink="../view/{{product.id}}"
                class="btn btn-success" role="button" >View</a>
             <a routerLink="../update/{{product.id}}"
-               class="btn btn-warning" role="button">Update</a>
+               class="btn btn-warning mx-2" role="button">Update</a>
             <a routerLink="../delete/{{product.id}}"
                class="btn btn-danger" role="button">Delete</a>
           </td>
@@ -38,22 +38,28 @@
       </table>
       <div class="pagination d-flex justify-content-center mt-5">
         <li class="page-item">
-          <button aria-label="Previous" (click)="previousPage()" [disabled]="page === 1">
+          <button aria-label="Previous" (click)="previousPage()" [disabled]="page === 1"
+                  [ngStyle]="{
+                    'border-color': '#ccc',
+                  }">
             <span aria-hidden="true">&laquo;</span>
           </button>
         </li>
-        <li class="page-item">
-          <a  (click)="goToPage(1)">
-            1
-          </a>
+        <li class="page-item" *ngFor="let pageNum of getPageNumbers()">
+          <button (click)="goToPage(pageNum)" [class.active]="page === pageNum"
+                  [ngStyle]="{
+                    'background-color': page === pageNum ? '#007bff' : '#fff',
+                    'color': page === pageNum ? '#fff' : '#000',
+                    'border-color': page === pageNum ? '#007bff' : '#ccc'
+                  }">
+            {{ pageNum }}
+          </button>
         </li>
         <li class="page-item">
-          <a (click)="goToPage(2)">
-            2
-          </a>
-        </li>
-        <li class="page-item">
-          <button aria-label="Next" (click)="nextPage()">
+          <button aria-label="Next" (click)="nextPage()" [disabled]="page === totalPages"
+            [ngStyle]="{
+              'border-color': '#ccc',
+            }">
             <span aria-hidden="true">&raquo;</span>
           </button>
         </li>

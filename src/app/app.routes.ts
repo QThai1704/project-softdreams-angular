@@ -25,6 +25,8 @@ import {ShowOrderComponent} from "./components/admin/order/show-order/show-order
 import {ViewOrderComponent} from "./components/admin/order/view-order/view-order.component";
 import {UpdateOrderComponent} from "./components/admin/order/update-order/update-order.component";
 import {DeleteOrderComponent} from "./components/admin/order/delete-order/delete-order.component";
+import {CheckOutComponent} from "./cart/check-out/check-out.component";
+import {ThanksComponent} from "./cart/thanks/thanks.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -32,7 +34,9 @@ export const routes: Routes = [
     children: [
       { path: 'products', component: ProductDetailComponent, title: 'View Product' },
       { path: '', component: HomeComponent, title: 'Home page'},
-      { path: 'cart', component: CartComponent, title: 'Cart' },
+      { path: 'cart', component: CartComponent, title: 'Cart'},
+      { path: 'checkout', component: CheckOutComponent, title: 'Kiểm tra đơn hàng' },
+      { path: 'thanks', component: ThanksComponent, title: 'Thanh toán thành công'}
     ]
   },
   { path: 'login', component: LoginComponent, title: 'Login' },

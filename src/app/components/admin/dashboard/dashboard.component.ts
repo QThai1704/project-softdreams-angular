@@ -14,7 +14,7 @@ import {RouterOutlet} from "@angular/router";
     RouterOutlet
   ],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css', '../../../../assets/admin/css/style-admin.css']
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
 

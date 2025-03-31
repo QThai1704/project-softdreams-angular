@@ -12,16 +12,11 @@
           <th scope="col">Thành tiền</th>
         </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td colspan="6">
-              Không có sản phẩm trong giỏ hàng
-            </td>
-          </tr>
-          <tr>
+        <tbody *ngIf="cartDetailList.length > 0; else emptyCartDetail">
+          <tr *ngFor="let cartDetail of cartDetailList">
             <th scope="row">
               <div class="d-flex align-items-center">
-                <img src=""
+                <img [src]="'../../assets/images/img-system/' + cartDetail.product.image"
                      class="img-fluid me-5 rounded-circle"
                      style="width: 80px; height: 80px;" alt="">
               </div>
@@ -29,27 +24,34 @@
             <td>
               <p class="mb-0 mt-4">
                 <a href="" target="_blank">
+                  {{cartDetail.product.name}}
                 </a>
               </p>
             </td>
             <td>
               <p class="mb-0 mt-4">
-
+                {{cartDetail.product.price }}
               </p>
-            </td>
-            <td>
-              <div class="input-group quantity mt-4" style="width: 100px;">
-                <input type="text"
-                       class="form-control form-control-sm text-center border-0">
-              </div>
             </td>
             <td>
               <p class="mb-0 mt-4" >
+                {{cartDetail.quantity}}
+              </p>
+            </td>
+            <td>
+              <p class="mb-0 mt-4" >
+                {{cartDetail.product.price * cartDetail.quantity }}
               </p>
             </td>
           </tr>
-
         </tbody>
+        <ng-template #emptyCartDetail>
+          <tr>
+            <td colspan="6">
+              Không có sản phẩm trong giỏ hàng
+            </td>
+          </tr>
+        </ng-template>
       </table>
     </div>
       <form (ngSubmit)="directSuccess()">
@@ -61,21 +63,30 @@
               <div class="row">
                 <div class="col-12 form-group mb-3">
                   <label>Tên người nhận</label>
-                  <input class="form-control" name="receiverName" required />
+                  <input class="form-control"
+                         [(ngModel)]="receiverName"
+                         name="receiverName"
+                         required />
                 </div>
                 <div class="col-12 form-group mb-3">
                   <label>Địa chỉ người nhận</label>
-                  <input class="form-control" name="receiverAddress" required />
+                  <input class="form-control"
+                         [(ngModel)]="receiverAddress"
+                         name="receiverAddress"
+                         required />
                 </div>
                 <div class="col-12 form-group mb-3">
                   <label>Số điện thoại</label>
-                  <input class="form-control" name="receiverPhone" required />
+                  <input class="form-control"
+                         [(ngModel)]="receiverPhone"
+                         name="receiverPhone"
+                         required />
                 </div>
                 <div class="mt-4">
                   <i class="fas fa-arrow-left"></i>
                   <a href="/cart">Quay lại giỏ hàng</a>
                 </div>
-                <input style="display: none;" value="${totalPrice}"
+                <input style="display: none;"
                        name="totalPrice" />
               </div>
             </div>
@@ -85,11 +96,10 @@
               <div class="p-4">
                 <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Thanh Toán</span>
                 </h1>
-
                 <div class="d-flex justify-content-between">
                   <h5 class="mb-0 me-4">Phí vận chuyển</h5>
                   <div class="">
-                    <p class="mb-0">0 đ</p>
+                    <p class="mb-0">{{shippingFee}} VNĐ</p>
                   </div>
                 </div>
               </div>
@@ -97,7 +107,7 @@
                 class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                 <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>
                 <p class="mb-0 pe-4">
-
+                  {{total + shippingFee}} VNĐ
                 </p>
               </div>
               <button

@@ -31,9 +31,11 @@ export class LoginComponent {
         sessionStorage.setItem("accessToken", response.data.accessToken);
         if(response.data.user?.role?.name === 'ADMIN') {
           this.router.navigate(['admin']).then();
+          alert("Đăng nhập thành công");
         }
         else {
           this.router.navigate(['']).then();
+          alert("Đăng nhập thành công");
         }
       },
       error => {

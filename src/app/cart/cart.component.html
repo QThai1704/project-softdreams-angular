@@ -13,16 +13,11 @@
           <th scope="col">Xử lý</th>
         </tr>
         </thead>
-        <tbody>
-<!--          <tr>-->
-<!--            <td colspan="6">-->
-<!--              Không có sản phẩm trong giỏ hàng-->
-<!--            </td>-->
-<!--          </tr>-->
-          <tr>
+        <tbody *ngIf="cartDetailList.length > 0; else emptyCartDetail">
+          <tr *ngFor="let cartDetail of cartDetailList">
             <th scope="row">
               <div class="d-flex align-items-center">
-                <img src="../../assets/images/img-system/1711078452562-dell-01.png"
+                <img [src]="'../../assets/images/img-system/' + cartDetail.product.image"
                      class="img-fluid me-5 rounded-circle"
                      style="width: 80px; height: 80px;" alt="">
               </div>
@@ -30,27 +25,27 @@
             <td>
               <p class="mb-0 mt-4">
                 <a href="" target="_blank">
-                  Laptop
+                  {{cartDetail.product.name}}
                 </a>
               </p>
             </td>
             <td>
               <p class="mb-0 mt-4">
-                10$
+                {{cartDetail.product.price }}
               </p>
             </td>
             <td>
               <div class="input-group quantity mt-4" style="width: 100px;">
                 <div class="input-group-btn">
-                  <button
+                  <button (click)="decreaseQuantity(cartDetail)"
                     class="btn btn-sm btn-minus rounded-circle bg-light border">
-                    <i class="fa fa-minus"></i>
                     <fa-icon [icon]="iconMinus"></fa-icon>
                   </button>
                 </div>
-                <input type="text" value="1" class="form-control form-control-sm text-center border-0"/>
+                <input type="text" [(ngModel)]="cartDetail.quantity" min="1"
+                       class="form-control form-control-sm text-center border-0"/>
                 <div class="input-group-btn">
-                  <button
+                  <button (click)="increaseQuantity(cartDetail)"
                     class="btn btn-sm btn-plus rounded-circle bg-light border">
                     <fa-icon [icon]="iconPlus"></fa-icon>
                   </button>
@@ -59,118 +54,26 @@
             </td>
             <td>
               <p class="mb-0 mt-4" >
-                10$
-              </p>
-            </td>
-            <td>
-              <form method="post" action="">
-                <button class="btn btn-md rounded-circle bg-light border mt-4">
-                  <fa-icon [icon]="iconTimes" class="text-danger"></fa-icon>
-                </button>
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/img-system/1711079496409-asus-02.png"
-                     class="img-fluid me-5 rounded-circle"
-                     style="width: 80px; height: 80px;" alt="">
-              </div>
-            </th>
-            <td>
-              <p class="mb-0 mt-4">
-                <a href="" target="_blank">
-                  Laptop
-                </a>
-              </p>
-            </td>
-            <td>
-              <p class="mb-0 mt-4">
-                10$
-              </p>
-            </td>
-            <td>
-              <div class="input-group quantity mt-4" style="width: 100px;">
-                <div class="input-group-btn">
-                  <button
-                    class="btn btn-sm btn-minus rounded-circle bg-light border">
-                    <fa-icon [icon]="iconMinus"></fa-icon>
-                  </button>
-                </div>
-                <input type="text" value="1" class="form-control form-control-sm text-center border-0"/>
-                <div class="input-group-btn">
-                  <button
-                    class="btn btn-sm btn-plus rounded-circle bg-light border">
-                    <fa-icon [icon]="iconPlus"></fa-icon>
-                  </button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <p class="mb-0 mt-4" >
-                10$
+                {{cartDetail.product.price * cartDetail.quantity }}
               </p>
             </td>
             <td>
               <form>
-                <button class="btn btn-md rounded-circle bg-light border mt-4">
-                  <fa-icon [icon]="iconTimes" class="text-danger"></fa-icon>
-                </button>
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <div class="d-flex align-items-center">
-                <img src="../../assets/images/img-system/1711080386941-lg-01.png"
-                     class="img-fluid me-5 rounded-circle"
-                     style="width: 80px; height: 80px;" alt="">
-              </div>
-            </th>
-            <td>
-              <p class="mb-0 mt-4">
-                <a href="" target="_blank">
-                  Laptop
-                </a>
-              </p>
-            </td>
-            <td>
-              <p class="mb-0 mt-4">
-                10$
-              </p>
-            </td>
-            <td>
-              <div class="input-group quantity mt-4" style="width: 100px;">
-                <div class="input-group-btn">
-                  <button
-                    class="btn btn-sm btn-minus rounded-circle bg-light border">
-                    <fa-icon [icon]="iconMinus"></fa-icon>
-                  </button>
-                </div>
-                <input type="text" value="1" class="form-control form-control-sm text-center border-0"/>
-                <div class="input-group-btn">
-                  <button
-                    class="btn btn-sm btn-plus rounded-circle bg-light border">
-                    <fa-icon [icon]="iconPlus"></fa-icon>
-                  </button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <p class="mb-0 mt-4" >
-                10$
-              </p>
-            </td>
-            <td>
-              <form method="post" action="">
-                <button class="btn btn-md rounded-circle bg-light border mt-4">
+                <button (click)="deleteProInCartApi(cartDetail.id)"
+                  class="btn btn-md rounded-circle bg-light border mt-4">
                   <fa-icon [icon]="iconTimes" class="text-danger"></fa-icon>
                 </button>
               </form>
             </td>
           </tr>
         </tbody>
+        <ng-template #emptyCartDetail>
+          <tr>
+            <td colspan="6">
+              Không có sản phẩm trong giỏ hàng
+            </td>
+          </tr>
+        </ng-template>
       </table>
     </div>
       <div class="row g-4 justify-content-start">
@@ -183,12 +86,14 @@
               <div class="d-flex justify-content-between mb-4">
                 <h5 class="mb-0 me-4">Tạm tính:</h5>
                 <p class="mb-0">
+                  {{total}} VNĐ
                 </p>
               </div>
               <div class="d-flex justify-content-between">
                 <h5 class="mb-0 me-4">Phí vận chuyển</h5>
                 <div class="">
                   <p class="mb-0">
+                    {{shippingFee}} VNĐ
                   </p>
                 </div>
               </div>
@@ -198,9 +103,10 @@
               class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
               <h5 class="mb-0 ps-4 me-4">Tổng tiền</h5>
               <p class="mb-0 pe-4">
+                {{total + shippingFee}} VNĐ
               </p>
             </div>
-            <form (ngSubmit)="checkout()" >
+            <form (ngSubmit)="handleCartDetailBeforeCheckoutApi()" >
               <div style="display: none;">
                   <div class="mb-3">
                     <div class="form-group">

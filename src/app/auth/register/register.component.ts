@@ -29,6 +29,7 @@ export class RegisterComponent {
       response => {
         this.router.navigate(['/login']);
         console.log('Login successful', response);
+        alert("Đăng ký thành công");
       },
       error => {
         this.boolError = true;

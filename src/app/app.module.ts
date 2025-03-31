@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, provideHttpClient, withFetch} from "@angular/common/http";
 import {ProductService} from "./service/product.service";
 import {FormsModule} from "@angular/forms";
 import {AuthService} from "./service/auth.service";
 import {JwtService} from "./service/jwt.service";
-import {RouterLink, RouterModule, RouterOutlet} from "@angular/router";
+import {RouterModule, RouterOutlet} from "@angular/router";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {CommonModule, NgIf} from "@angular/common";
-import {HomeComponent} from "./home/home.component";
-import {BannerComponent} from "./banner/banner.component";
-import {FeatureComponent} from "./feature/feature.component";
-import {FooterComponent} from "./footer/footer.component";
-import {ProductComponent} from "./product/product.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [

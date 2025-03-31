@@ -1,5 +1,6 @@
 export interface Order {
   id: number;
+  orderCode: string;
   totalPrice: number;
   receiverName: string | null;
   receiverAddress: string | null;

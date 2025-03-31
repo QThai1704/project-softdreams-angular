@@ -1,14 +1,34 @@
 <div class="mt-5">
   <div class="row">
     <div class="col-12 mx-auto">
-      <div class="d-flex">
-        <h3>Table Orders</h3>
+      <div class="d-flex justify-content-end align-items-center">
+        <h3 class="me-auto">Table Orders</h3>
+        <button class="py-2 bg-light"
+           (click) = "fetchAllOrder()">
+          <span class="text-dark" style="width: 130px;">Tất cả</span>
+        </button>
+      </div>
+      <div class="input-group mx-auto d-flex mt-2">
+        <input type="search"
+               class="form-control p-3"
+               placeholder="Nhập mã hóa đơn cần tìm kiếm..."
+               aria-describedby="search-icon-1"
+               name="code"
+               [(ngModel)]="code"
+               (keyup.enter)="filterOrder(code)"
+        />
+        <button (click)="filterOrder(code)">
+          <span id="search-icon-1" class="input-group-text p-3">
+            <fa-icon [icon]="iconSearch"></fa-icon>
+          </span>
+        </button>
       </div>
       <hr />
       <table class=" table table-bordered table-hover">
         <thead>
         <tr>
           <th>ID</th>
+          <th>Code</th>
           <th>Total Price</th>
           <th>User</th>
           <th>Status</th>
@@ -18,6 +38,9 @@
         <tbody>
           <tr *ngFor="let order of orders">
             <th>{{order.id}}</th>
+            <td>
+              {{order.orderCode}}
+            </td>
             <td>
               {{order.totalPrice}}
             </td>

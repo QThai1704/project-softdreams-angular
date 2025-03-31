@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {FetchAllItem} from "../model/FetchAllItem";
-import {Order, OrderDetailRes} from "../model/order";
+import {Order} from "../model/order";
 import {FetchItem} from "../model/FetchItem";
 
 @Injectable({
@@ -51,5 +51,12 @@ export class OrderService {
         console.error('Error downloading file:', error);
       }
     });
+  }
+
+  private getOrderByOrderCodeUrl = 'http://localhost:8081/api/v1/admin/order-code';
+  getOrderByOrderCode(code: string): Observable<FetchAllItem<Order>> {
+    let params = new HttpParams()
+      .set('orderCode', code.toString());
+    return this.http.get<FetchAllItem<Order>>(this.getOrderByOrderCodeUrl, {params});
   }
 }

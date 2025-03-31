@@ -7,7 +7,22 @@
           <h1>Sản phẩm chính hãng</h1>
         </div>
         <div class="col-lg-8 text-end">
-          <ul class="nav nav-pills d-inline-flex text-center mb-5">
+          <ul class="nav nav-pills d-inline-flex text-center mb-5 mt-3">
+            <div class="input-group mx-auto d-flex">
+              <input type="search"
+                     class="form-control p-3"
+                     placeholder="Nhập từ khóa tìm kiếm..."
+                     aria-describedby="search-icon-1"
+                     [(ngModel)]="inputSearch"
+                     name="inputSearch"
+                     (keyup.enter)="filterProduct(inputSearch)"
+              />
+              <button (click) = "filterProduct(inputSearch)">
+                <span id="search-icon-1" class="input-group-text p-3">
+                  <fa-icon [icon]="iconSearch"></fa-icon>
+                </span>
+              </button>
+            </div>
             <li class="nav-item">
               <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1"
                  (click) = "getProduct(1)">

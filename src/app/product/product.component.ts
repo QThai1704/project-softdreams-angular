@@ -6,11 +6,15 @@ import {Product} from "../model/product";
 import {FetchAllItem} from "../model/FetchAllItem";
 import {ResPagination} from "../model/paging-product";
 import {FetchItem} from "../model/FetchItem";
+import {CartReq} from "../model/cart-req";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ProductItemComponent, NgForOf, NgStyle],
+  imports: [ProductItemComponent, NgForOf, NgStyle, FaIconComponent, FormsModule],
   templateUrl: './product.component.html',
   styleUrls: ['../../styles.css', './product.component.css']
 })
@@ -21,6 +25,7 @@ export class ProductComponent implements OnInit {
   size : number = 4;
   totalPages : number = 0;
   totalRecords : number = 0;
+  inputSearch: string = '';
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
@@ -77,4 +82,6 @@ export class ProductComponent implements OnInit {
     }
     return pageNumbers;
   }
+
+  protected readonly iconSearch = faSearch;
 }

@@ -20,7 +20,7 @@ export class DeleteProductComponent {
     try {
       this.productId = Number(this.route.snapshot.paramMap.get('id'));
       await firstValueFrom(this.productService.deleteProduct(this.productId));
-      this.router.navigate(['admin/product']);
+      this.router.navigate(['admin/product']).then();
     } catch (err) {
       console.error('Có lỗi khi xóa sản phẩm', err);
     }
